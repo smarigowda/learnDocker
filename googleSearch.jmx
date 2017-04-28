@@ -15,7 +15,7 @@
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
-          <stringProp name="LoopController.loops">3</stringProp>
+          <stringProp name="LoopController.loops">10</stringProp>
         </elementProp>
         <stringProp name="ThreadGroup.num_threads">1</stringProp>
         <stringProp name="ThreadGroup.ramp_time">1</stringProp>
@@ -182,12 +182,16 @@
           <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor - Stop Thread Demo" enabled="true">
             <stringProp name="cacheKey"></stringProp>
             <stringProp name="filename"></stringProp>
-            <stringProp name="parameters"></stringProp>
+            <stringProp name="parameters">argument1, argument2, argument3</stringProp>
             <stringProp name="script">log.info(&quot;MyPrint ::...............&quot; + sampler.sample());
-//sampler.sample().setStopThread(true);
-//prev.setStopThread(true);
+// stops the current thread at this point, loop only once.
+// if you are looping for 3 iterations then only the first iteration will be run
+prev.setStopThread(true);
 log.info(&quot;MyPrint ::...............&quot; + ctx.getPreviousResult().isSuccessful());
-// ctx.getPreviousResult().isSuccessful() == true</stringProp>
+// ctx.getPreviousResult().isSuccessful() == true
+log.info(&quot;MyPrint ::...............&quot; + args[0])
+log.info(&quot;MyPrint ::...............&quot; + args[1])
+log.info(&quot;MyPrint ::...............&quot; + args[2])</stringProp>
             <stringProp name="scriptLanguage">groovy</stringProp>
           </JSR223PostProcessor>
           <hashTree/>
