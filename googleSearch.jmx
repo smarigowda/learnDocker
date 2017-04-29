@@ -28,7 +28,7 @@
       <hashTree>
         <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Google Search 1" enabled="true">
           <boolProp name="TransactionController.includeTimers">false</boolProp>
-          <boolProp name="TransactionController.parent">false</boolProp>
+          <boolProp name="TransactionController.parent">true</boolProp>
         </TransactionController>
         <hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request" enabled="true">
@@ -86,7 +86,7 @@
             <stringProp name="filename"></stringProp>
           </ResultCollector>
           <hashTree/>
-          <BackendListener guiclass="BackendListenerGui" testclass="BackendListener" testname="Backend Listener" enabled="false">
+          <BackendListener guiclass="BackendListenerGui" testclass="BackendListener" testname="Backend Listener" enabled="true">
             <elementProp name="arguments" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments">
                 <elementProp name="influxdbMetricsSender" elementType="Argument">
@@ -96,7 +96,7 @@
                 </elementProp>
                 <elementProp name="influxdbUrl" elementType="Argument">
                   <stringProp name="Argument.name">influxdbUrl</stringProp>
-                  <stringProp name="Argument.value">http://10.189.133.50:8086/write?db=mydb</stringProp>
+                  <stringProp name="Argument.value">http://192.168.0.14:8086/write?db=mydb</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
                 <elementProp name="application" elementType="Argument">
@@ -186,7 +186,7 @@
             <stringProp name="script">log.info(&quot;MyPrint ::...............&quot; + sampler.sample());
 // stops the current thread at this point, loop only once.
 // if you are looping for 3 iterations then only the first iteration will be run
-prev.setStopThread(true);
+//prev.setStopThread(true);
 log.info(&quot;MyPrint ::...............&quot; + ctx.getPreviousResult().isSuccessful());
 // ctx.getPreviousResult().isSuccessful() == true
 log.info(&quot;MyPrint ::...............&quot; + args[0])
@@ -195,7 +195,7 @@ log.info(&quot;MyPrint ::...............&quot; + args[2])</stringProp>
             <stringProp name="scriptLanguage">groovy</stringProp>
           </JSR223PostProcessor>
           <hashTree/>
-          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If Controller" enabled="true">
+          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If Controller" enabled="false">
             <stringProp name="IfController.condition">${__javaScript(ctx.getPreviousResult().isSuccessful() == true)}</stringProp>
             <boolProp name="IfController.evaluateAll">false</boolProp>
             <boolProp name="IfController.useExpression">true</boolProp>
