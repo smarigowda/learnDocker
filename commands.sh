@@ -7,6 +7,3 @@ docker run -it ubuntu /bin/bash
 White Horse Surveyors Ltdsudo 
 apt-get update
 sudo apt-get install influxdb-client
-
-
-influx -execute 'SHOW DATABASES'
