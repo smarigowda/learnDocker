@@ -80,7 +80,7 @@ log.info(&quot;********* NAME ********* = &quot; + props.getProperty(&quot;NAME&
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
-          <stringProp name="LoopController.loops">${LOOP_COUNT}</stringProp>
+          <stringProp name="LoopController.loops">${__P(loops, 5)}</stringProp>
         </elementProp>
         <stringProp name="ThreadGroup.num_threads">3</stringProp>
         <stringProp name="ThreadGroup.ramp_time">1</stringProp>
@@ -89,6 +89,7 @@ log.info(&quot;********* NAME ********* = &quot; + props.getProperty(&quot;NAME&
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <stringProp name="TestPlan.comments">${LOOP_COUNT}</stringProp>
       </ThreadGroup>
       <hashTree>
         <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Transaction Google Search" enabled="true">
@@ -191,7 +192,29 @@ log.info(&quot;********* NAME ********* = &quot; + props.getProperty(&quot;NAME&
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
           </HTTPSamplerProxy>
-          <hashTree/>
+          <hashTree>
+            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor - Stop Thread Demo" enabled="true">
+              <stringProp name="cacheKey">2515b467-87b3-43bb-ad41-d4787b3d2eb0</stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="parameters">argument1, argument2, argument3</stringProp>
+              <stringProp name="script">//log.info(&quot;MyPrint ::...............&quot; + sampler.sample());
+// stops the current thread at this point, loop only once.
+// if you are looping for 3 iterations then only the first iteration will be run
+//prev.setStopThread(true);
+//log.info(&quot;MyPrint ::...............&quot; + ctx.getPreviousResult().isSuccessful());
+// ctx.getPreviousResult().isSuccessful() == true
+//log.info(&quot;MyPrint ::...............&quot; + args[0])
+//log.info(&quot;MyPrint ::...............&quot; + args[1])
+//log.info(&quot;MyPrint ::...............&quot; + args[2])
+
+import org.apache.jmeter.util.JMeterUtils;
+log.info(&quot;##########  NAME = &quot; + props.getProperty(&quot;NAME&quot;));
+// SampleResult.setResponseData(&quot;data&quot;);
+</stringProp>
+              <stringProp name="scriptLanguage">groovy</stringProp>
+            </JSR223PostProcessor>
+            <hashTree/>
+          </hashTree>
           <BackendListener guiclass="BackendListenerGui" testclass="BackendListener" testname="Backend Listener" enabled="false">
             <elementProp name="arguments" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments">
@@ -290,25 +313,6 @@ log.info(&quot;********* NAME ********* = &quot; + props.getProperty(&quot;NAME&
             <boolProp name="displayJMeterVariables">true</boolProp>
             <boolProp name="displaySystemProperties">false</boolProp>
           </DebugSampler>
-          <hashTree/>
-          <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor - Stop Thread Demo" enabled="true">
-            <stringProp name="cacheKey"></stringProp>
-            <stringProp name="filename"></stringProp>
-            <stringProp name="parameters">argument1, argument2, argument3</stringProp>
-            <stringProp name="script">//log.info(&quot;MyPrint ::...............&quot; + sampler.sample());
-// stops the current thread at this point, loop only once.
-// if you are looping for 3 iterations then only the first iteration will be run
-//prev.setStopThread(true);
-//log.info(&quot;MyPrint ::...............&quot; + ctx.getPreviousResult().isSuccessful());
-// ctx.getPreviousResult().isSuccessful() == true
-//log.info(&quot;MyPrint ::...............&quot; + args[0])
-//log.info(&quot;MyPrint ::...............&quot; + args[1])
-//log.info(&quot;MyPrint ::...............&quot; + args[2])
-
-import org.apache.jmeter.util.JMeterUtils;
-log.info(&quot;##########  NAME = &quot; + props.getProperty(&quot;NAME&quot;));</stringProp>
-            <stringProp name="scriptLanguage">groovy</stringProp>
-          </JSR223PostProcessor>
           <hashTree/>
           <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If Controller" enabled="false">
             <stringProp name="IfController.condition">${__javaScript(ctx.getPreviousResult().isSuccessful() == true)}</stringProp>
@@ -480,6 +484,15 @@ log.info(&quot;##########  NAME = &quot; + props.getProperty(&quot;NAME&quot;));
               <hashTree/>
             </hashTree>
           </hashTree>
+          <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="JSR223 Sampler" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey"></stringProp>
+            <stringProp name="script">log.info(&quot;Example of a JSR223 sample...&quot;)
+return &quot;Beanshell wrote this message...&quot;;</stringProp>
+          </JSR223Sampler>
+          <hashTree/>
         </hashTree>
         <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Test Action" enabled="false">
           <intProp name="ActionProcessor.action">1</intProp>
