@@ -49,7 +49,6 @@
               <stringProp name="764597751">Test Plan</stringProp>
               <stringProp name="-1402880153">Modules</stringProp>
               <stringProp name="1214159634">Reusable Module 1</stringProp>
-              <stringProp name="-1591803190">Simple Controller</stringProp>
             </collectionProp>
           </ModuleController>
           <hashTree/>
@@ -77,7 +76,6 @@
               <stringProp name="764597751">Test Plan</stringProp>
               <stringProp name="-1402880153">Modules</stringProp>
               <stringProp name="1214159634">Reusable Module 1</stringProp>
-              <stringProp name="-1591803190">Simple Controller</stringProp>
             </collectionProp>
           </ModuleController>
           <hashTree/>
@@ -136,13 +134,24 @@
       <hashTree>
         <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Reusable Module 1" enabled="true"/>
         <hashTree>
-          <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Simple Controller" enabled="true"/>
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Transaction Controller" enabled="true">
+            <boolProp name="TransactionController.parent">true</boolProp>
+          </TransactionController>
           <hashTree>
             <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler" enabled="true">
               <boolProp name="displayJMeterProperties">false</boolProp>
               <boolProp name="displayJMeterVariables">true</boolProp>
               <boolProp name="displaySystemProperties">false</boolProp>
             </DebugSampler>
+            <hashTree>
+              <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+                <stringProp name="ConstantTimer.delay">3000</stringProp>
+              </ConstantTimer>
+              <hashTree/>
+            </hashTree>
+            <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion" enabled="true">
+              <stringProp name="DurationAssertion.duration">1000</stringProp>
+            </DurationAssertion>
             <hashTree/>
           </hashTree>
         </hashTree>
