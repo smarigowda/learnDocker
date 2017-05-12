@@ -51,7 +51,7 @@
               </elementProp>
               <elementProp name="ResponseMessage" elementType="Argument">
                 <stringProp name="Argument.name">ResponseMessage</stringProp>
-                <stringProp name="Argument.value"></stringProp>
+                <stringProp name="Argument.value">OK</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
               <elementProp name="Status" elementType="Argument">
@@ -115,7 +115,7 @@
                 </elementProp>
                 <elementProp name="ResponseMessage" elementType="Argument">
                   <stringProp name="Argument.name">ResponseMessage</stringProp>
-                  <stringProp name="Argument.value"></stringProp>
+                  <stringProp name="Argument.value">OK</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
                 <elementProp name="Status" elementType="Argument">
@@ -125,7 +125,7 @@
                 </elementProp>
                 <elementProp name="SamplerData" elementType="Argument">
                   <stringProp name="Argument.name">SamplerData</stringProp>
-                  <stringProp name="Argument.value">${returnVar1}</stringProp>
+                  <stringProp name="Argument.value">${returnVar}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
                 <elementProp name="ResultData" elementType="Argument">
@@ -228,7 +228,7 @@
                 </elementProp>
                 <elementProp name="ResponseMessage" elementType="Argument">
                   <stringProp name="Argument.name">ResponseMessage</stringProp>
-                  <stringProp name="Argument.value"></stringProp>
+                  <stringProp name="Argument.value">OK</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
                 <elementProp name="Status" elementType="Argument">
