@@ -1,0 +1,10 @@
+NAME,INITIALS,DATAFILENUM
+Santosh 1,AM,2
+Roopa 1,J,2
+Sukruthi 1,S,2
+Santosh 2,AM,2
+Roopa 2,J,2
+Sukruthi 2,S,2
+Santosh 3,AM,2
+Roopa 3,J,2
+Sukruthi 3,S,2
