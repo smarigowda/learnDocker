@@ -34,13 +34,13 @@
           <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
             <stringProp name="delimiter">,</stringProp>
             <stringProp name="fileEncoding"></stringProp>
-            <stringProp name="filename">data_${__threadNum}.txt</stringProp>
+            <stringProp name="filename">data.txt</stringProp>
             <boolProp name="ignoreFirstLine">true</boolProp>
             <boolProp name="quotedData">false</boolProp>
             <boolProp name="recycle">true</boolProp>
-            <stringProp name="shareMode">shareMode.all</stringProp>
+            <stringProp name="shareMode">shareMode.thread</stringProp>
             <boolProp name="stopThread">false</boolProp>
-            <stringProp name="variableNames">name,initials,datafilenum</stringProp>
+            <stringProp name="variableNames"></stringProp>
           </CSVDataSet>
           <hashTree/>
           <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler - ${NAME}, ${INITIALS}" enabled="false">
@@ -49,7 +49,13 @@
             <boolProp name="displaySystemProperties">false</boolProp>
           </DebugSampler>
           <hashTree/>
-          <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler - ${name}, ${initials} - Thread Num = ${__threadNum} - datafile num = ${datafilenum}" enabled="true">
+          <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler - ${name}, ${initials} - Thread Num = ${__threadNum} - datafile num = ${datafilenum}" enabled="false">
+            <boolProp name="displayJMeterProperties">false</boolProp>
+            <boolProp name="displayJMeterVariables">true</boolProp>
+            <boolProp name="displaySystemProperties">false</boolProp>
+          </DebugSampler>
+          <hashTree/>
+          <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler - Thread Num = ${__threadNum} - ${__CSVRead(data.txt,0)} ${__CSVRead(data.txt,next)}" enabled="true">
             <boolProp name="displayJMeterProperties">false</boolProp>
             <boolProp name="displayJMeterVariables">true</boolProp>
             <boolProp name="displaySystemProperties">false</boolProp>
