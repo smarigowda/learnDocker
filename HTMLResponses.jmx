@@ -60,6 +60,16 @@
               <stringProp name="HtmlExtractor.extractor_impl"></stringProp>
             </HtmlExtractor>
             <hashTree/>
+            <XPathExtractor guiclass="XPathExtractorGui" testclass="XPathExtractor" testname="XPath Extractor" enabled="true">
+              <stringProp name="XPathExtractor.default"></stringProp>
+              <stringProp name="XPathExtractor.refname">post_xpath</stringProp>
+              <stringProp name="XPathExtractor.matchNumber">1</stringProp>
+              <stringProp name="XPathExtractor.xpathQuery">/html/body/div/p</stringProp>
+              <boolProp name="XPathExtractor.validate">false</boolProp>
+              <boolProp name="XPathExtractor.tolerant">false</boolProp>
+              <boolProp name="XPathExtractor.namespace">false</boolProp>
+            </XPathExtractor>
+            <hashTree/>
           </hashTree>
         </hashTree>
         <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
