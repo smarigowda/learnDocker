@@ -1,0 +1,2 @@
+// this is the command to run jmeter test using Taurus docker container
+sudo docker run --rm -v /Users/sma54/SAN/github/learnDocker:/bzt-configs undera/taurus execUsingTaurus.yml

@@ -1,0 +1,9 @@
+aggregator: aggregator
+
+execution:
+- executor: jmeter
+  scenario: jmx_sample
+  
+scenarios:
+  jmx_sample:
+    script: example.jmx
